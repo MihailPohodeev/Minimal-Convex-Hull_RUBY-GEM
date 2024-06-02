@@ -1,0 +1,3 @@
+class GrahemAlrotithm
+  #TODO
+end
