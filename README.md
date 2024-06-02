@@ -1,30 +1,53 @@
-# MinimalConvexHull
-
+# Минимальная выпуклая оболочка
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/MihailPohodeev/Minimal-Convex-Hull_RUBY-GEM/releases/tag/onPublish)
+![alt text](https://habrastorage.org/r/w1560/storage2/b4a/ef3/db1/b4aef3db1d109ec10d88eb6ab03ba6cc.png)
 Тема гема: Библиотека для построения выпуклых оболочек. В данном проекте реализованы алгоритмы Джарвиса и Грэхема. Алгоритм Джарвиса (или алгоритм оболочки) используется для нахождения выпуклой оболочки множества точек в двумерном пространстве. Он работает путем построения выпуклой оболочки пошагово, выбирая следующую точку, которая образует выпуклую оболочку с предыдущими точками.
 
 Алгоритм Грэхема также используется для нахождения выпуклой оболочки множества точек в двумерном пространстве. Он сначала находит самую левую нижнюю точку и использует её в качестве отправной точки. Затем он сортирует остальные точки по углу, который они образуют с отправной точкой, и затем проходит по отсортированным точкам, строя выпуклую оболочку.
 
-## Installation
+## Установка
 
-Install the gem and add to the application's Gemfile by executing:
+Самый простой вариант установки - из репозитория RubyGems.org. Для этого достаточно ввести команду
 
-    $ bundle add minimal_convex_hull
+    $ gem install minimal-convex-hull
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+Также возможна сборка из исходников. Для этого клонируйте содержимое репозитория и в корневой директории введите команду 
 
-    $ gem install minimal_convex_hull
+    $ gem build minimal-convex-hull.gemspec
+    
+для сборки гема, а затем команду
 
-## Usage
+    $ gem install minimal-convex-hull-0.0.3.gem
+    
+для его установки.
+## Использование
+для начала подключите модуль "minimal-convex-hull"
 
-TODO: Write usage instructions here
+    $ require "minimal-convex-hull"
+    
+чтобы задействовать функции поиска, необходимо написать
+    
+    $ grahem_convex_hull = GrahemAlrotithm.convex_hull([Point.new(1, 0), Point.new(2, 4), Point.new(5, -6)])
+    
+для построения выпуклой оболочки Грэхема, и
 
-## Development
+     $ jarvis_convex_hull = JarvisAlrotithm.convex_hull([Point.new(1, 0), Point.new(2, 4), Point.new(5, -6)])
 
-After checking out the repo, run bin/setup to install dependencies. You can also run bin/console for an interactive prompt that will allow you to experiment.
+для построения минимальной выпуклой оболочки Джарвиса.
 
-To install this gem onto your local machine, run bundle exec rake install. To release a new version, update the version number in version.rb, and then run bundle exec rake release, which will create a git tag for the version, push git commits and the created tag, and push the .gem file to [rubygems.org](https://rubygems.org).
+Результатом работы обоих алгоритмов будет массив из точек, которые состовляют минимальную выпуклую оболочку.
+    
+    
+
+## Тестирование
+
+Для тестирования необходимо установить гем и в корневой директории ввести команду:
+
+    $ rake
+    
+вследствие чего запустятся тесты, находящиеся в директории test/test_MCH.rb
 
 ## Разработчики
 
-Походеев Михаил
-Пинчук Константин
+Походеев Михаил - ФИИТ-2.4
+Пинчук Константин - ФИИТ-2.1
