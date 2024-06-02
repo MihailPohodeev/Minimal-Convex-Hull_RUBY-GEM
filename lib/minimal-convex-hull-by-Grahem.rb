@@ -1,12 +1,15 @@
+require "point"
+
 class GrahemAlrotithm
 private
-  def rotate(a, b, c)
+
+  def self.rotate(a, b, c)
     return (b.x - a.x) * (c.y - b.y) - (b.y - a.y) * (c.x - b.x)
   end
 
 public
 
-  def convex_hull(points)
+  def self.convex_hull(points)
     n = points.length
     p = (0...n).to_a
     for i in 0...n
