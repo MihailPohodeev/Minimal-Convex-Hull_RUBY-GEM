@@ -1,15 +1,17 @@
 require "point"
 
 class JarvisAlrotithm
+private
+
   def self.rotate(a, b, c)
     return (b.x - a.x) * (c.y - b.y) - (b.y - a.y) * (c.x - b.x)
   end
 
+public
 
   def self.convex_hull(points)
     n = points.length
     p = (0...n).to_a
-    # start point
     for i in 1...n
       if points[p[i]].x < points[p[0]].x
         p[i], p[0] = p[0], p[i]
@@ -39,6 +41,5 @@ class JarvisAlrotithm
       result << points[h[i]]
     end
     return result
-  end 
-  
+  end  
 end
