@@ -11,6 +11,49 @@ end
 Algorithms = [GrahemAlrotithm, JarvisAlrotithm]
 
 class MCH_Test < Minitest::Test
+  def test_0_1_points
+    for i in 0..1
+      points = []
+      convex_hull_points = Algorithms[i].convex_hull(points)
+      array1_sorted = convex_hull_points.sort_by { |point| [point.x, point.y] }
+      array2_sorted = [].sort_by { |point| [point.x, point.y] }
+      assert_equal array1_sorted, array2_sorted
+      
+      # check 1 points
+      points = [
+        Point.new(1, 1),
+      ]
+      convex_hull_points = Algorithms[i].convex_hull(points)
+      array1_sorted = convex_hull_points.sort_by { |point| [point.x, point.y] }
+      array2_sorted = [Point.new(1, 1)].sort_by { |point| [point.x, point.y] }
+      assert_equal array1_sorted, array2_sorted
+    end
+  end
+  
+  def test_2_points
+    for i in 0..1
+      # check 2 points (same)
+      points = [
+        Point.new(0, 0),
+        Point.new(0, 0),
+      ]
+      convex_hull_points = Algorithms[i].convex_hull(points)
+      array1_sorted = convex_hull_points.sort_by { |point| [point.x, point.y] }
+      array2_sorted = [Point.new(0, 0), Point.new(0, 0)].sort_by { |point| [point.x, point.y] }
+      assert_equal array1_sorted, array2_sorted
+      
+      # check 2 points (different)
+      points = [
+        Point.new(1, 1),
+        Point.new(2, 2),
+      ]
+      convex_hull_points = Algorithms[i].convex_hull(points)
+      array1_sorted = convex_hull_points.sort_by { |point| [point.x, point.y] }
+      array2_sorted = [Point.new(1, 1), Point.new(2, 2)].sort_by { |point| [point.x, point.y] }
+      assert_equal array1_sorted, array2_sorted
+    end
+  end
+
   def test_3_points
     for i in 0..1
       # check 3 points (triangle)
