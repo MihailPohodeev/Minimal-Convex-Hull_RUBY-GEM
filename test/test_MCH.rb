@@ -39,7 +39,7 @@ class MCH_Test < Minitest::Test
       ]
       convex_hull_points = Algorithms[i].convex_hull(points)
       array1_sorted = convex_hull_points.sort_by { |point| [point.x, point.y] }
-      array2_sorted = [Point.new(0, 0), Point.new(0, 0)].sort_by { |point| [point.x, point.y] }
+      array2_sorted = [Point.new(0, 0)].sort_by { |point| [point.x, point.y] }
       assert_equal array1_sorted, array2_sorted
       
       # check 2 points (different)

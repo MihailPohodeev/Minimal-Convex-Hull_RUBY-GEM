@@ -41,7 +41,7 @@ public
     end
     result = []
     for i in 0..h.length-1
-      if not result.include? points[s[i]]
+      if not result.include? points[h[i]]
         result << points[h[i]]
       end
     end
