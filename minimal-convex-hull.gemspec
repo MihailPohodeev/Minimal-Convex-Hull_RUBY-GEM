@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.description = "Grahem's and Jarvis's algorithms finding minimal convex hull"
   s.authors     = ["Mihail Pohodeev", "Konstantic Pinchuk"]
   s.email       = "mishapohodeev@yandex.ru"
-  s.files       = ["lib/minimal-convex-hull-by-Grahem.rb", "lib/minimal-convex-hull-by-Jarvis.rb", "lib/point.rb", "lib/minimal-convex-hull"]
+  s.files       = ["lib/minimal-convex-hull-by-Grahem.rb", "lib/minimal-convex-hull-by-Jarvis.rb", "lib/point.rb", "lib/minimal-convex-hull.rb"]
   s.homepage    = "https://russ-travel.on-render.com"
   s.license       = "MIT"
 end
