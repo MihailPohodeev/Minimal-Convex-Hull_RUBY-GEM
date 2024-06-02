@@ -11,6 +11,9 @@ public
 
   def self.convex_hull(points)
     n = points.length
+    if n < 2
+      return points.clone
+    end
     p = (0...n).to_a
     for i in 0...n
       if points[p[i]].x < points[p[0]].x
