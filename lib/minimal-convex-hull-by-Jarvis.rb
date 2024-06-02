@@ -1,22 +1,44 @@
+require "point"
+
 class JarvisAlrotithm
-  def jarvis(points)
-    p0 = points.min_by { |p| [p.x, p.y] }
-    hull = [p0]
-    loop do
-      t = points[0]
-      points.each do |p|
-        if (p - p0).cross(t - p0) > 0
-          t = p
-        end
-      end
-      if t == p0
-        break
-      else
-        p0 = t
-        hull.push(t)
+  def self.rotate(a, b, c)
+    return (b.x - a.x) * (c.y - b.y) - (b.y - a.y) * (c.x - b.x)
+  end
+
+
+  def self.convex_hull(points)
+    n = points.length
+    p = (0...n).to_a
+    # start point
+    for i in 1...n
+      if points[p[i]].x < points[p[0]].x
+        p[i], p[0] = p[0], p[i]
       end
     end
-    hull
-  end
+
+    h = [p[0]]
+    p.delete_at(0)
+    p.push(h[0])
+
+    loop do
+      right = 0
+      for i in 1...p.length
+        if rotate(points[h[-1]], points[p[right]], points[p[i]]) < 0
+          right = i
+        end
+      end
+      if p[right] == h[0]
+        break
+      else
+        h.push(p[right])
+        p.delete_at(right)
+      end
+    end
+    result = []
+    for i in 0..h.length-1
+      result << points[h[i]]
+    end
+    return result
+  end 
   
 end
