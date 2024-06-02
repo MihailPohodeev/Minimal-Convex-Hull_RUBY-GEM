@@ -1,13 +1,14 @@
 class Point
-  attr_accessor :x, :y
+  attr_accessor :x, :y, :eps
 
   def initialize(x, y)
     @x = x
     @y = y
+    @eps = 0.0001
   end
 
   def ==(other)
-    @x == other.x && @y == other.y
+    (@x - other.x).abs < eps && (@y - other.y).abs < eps
   end
 
   def to_s

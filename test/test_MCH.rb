@@ -3,16 +3,12 @@ require "minimal-convex-hull-by-Grahem"
 require "minimal-convex-hull-by-Jarvis"
 require "point"
 
-def assert_equal_arrays_without_sequence(array1, array2)
-  result = (array1 - array2) + (array2 - array1)
-  assert result.empty?, "#{array1} is not equal to #{array2}"
-end
-
 Algorithms = [GrahemAlrotithm, JarvisAlrotithm]
 
 class MCH_Test < Minitest::Test
   def test_0_1_points
     for i in 0..1
+      # check empty array
       points = []
       convex_hull_points = Algorithms[i].convex_hull(points)
       array1_sorted = convex_hull_points.sort_by { |point| [point.x, point.y] }
@@ -67,6 +63,7 @@ class MCH_Test < Minitest::Test
       array2_sorted = [Point.new(0, 3), Point.new(3, 0), Point.new(0, 0)].sort_by { |point| [point.x, point.y] }
       assert_equal array1_sorted, array2_sorted
       
+      # check 3 point located on single line
       points = [
         Point.new(1, 1),
         Point.new(2, 2),
@@ -107,7 +104,44 @@ class MCH_Test < Minitest::Test
     end
   end
 
-  def test_5_points
-    assert_equal 2, 2
+  def test_too_many_points
+    for i in 0..1
+      # check 4 points (square)
+      points = [
+        Point.new(0, 3),
+        Point.new(1, 2),
+        Point.new(2, 2),
+        Point.new(-1.5, 1.5),
+        Point.new(0, -1.6),
+        Point.new(-1, 1),
+        Point.new(1, 1),
+        Point.new(2, 1),
+        Point.new(0, 0),
+        Point.new(3, 0),
+        Point.new(0, -2),
+        Point.new(1, -1),
+      ]
+      convex_hull_points = Algorithms[i].convex_hull(points)
+      array1_sorted = convex_hull_points.sort_by { |point| [point.x, point.y] }
+      array2_sorted = [Point.new(-1.5, 1.5), Point.new(0, 3), Point.new(2, 2), Point.new(3, 0), Point.new(0, -2)].sort_by { |point| [point.x, point.y] }
+      assert_equal array1_sorted, array2_sorted
+      
+      # check 4 points where 1 point inside other's square
+      points = [
+        Point.new(-1, 3),
+        Point.new(0, 0),
+        Point.new(0, -1),
+        Point.new(0, -1.5),
+        Point.new(0, -2),
+        Point.new(-0.5, -1.5),
+        Point.new(-1, -2),
+        Point.new(1, -1),
+        Point.new(0, -3),
+      ]
+      convex_hull_points = Algorithms[i].convex_hull(points)
+      array1_sorted = convex_hull_points.sort_by { |point| [point.x, point.y] }
+      array2_sorted = [Point.new(-1, 3), Point.new(0, -3), Point.new(1, -1.0), Point.new(-1, -2),].sort_by { |point| [point.x, point.y] }
+      assert_equal array1_sorted, array2_sorted
+    end
   end
 end
