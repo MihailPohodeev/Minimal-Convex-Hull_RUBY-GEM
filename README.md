@@ -1,6 +1,6 @@
 # Минимальная выпуклая оболочка
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/MihailPohodeev/Minimal-Convex-Hull_RUBY-GEM/releases/tag/onPublish)
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/MihailPohodeev/Minimal-Convex-Hull_RUBY-GEM/releases/tag/Release)
 
 ![alt text](https://habrastorage.org/r/w1560/storage2/b4a/ef3/db1/b4aef3db1d109ec10d88eb6ab03ba6cc.png)
 
@@ -53,4 +53,5 @@
 ## Разработчики
 
 Походеев Михаил - ФИИТ-2.4
+
 Пинчук Константин - ФИИТ-2.1
